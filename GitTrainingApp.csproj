@@ -50,12 +50,6 @@
     <Compile Include="Infrastructures\RepositoryFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\CommandBase.cs" />
-    <Compile Include="UI\ExitCommand.cs" />
-    <Compile Include="UI\ListCommand.cs" />
-    <Compile Include="UI\RemoveCommand.cs" />
-    <Compile Include="UI\SaveCommand.cs" />
-    <Compile Include="UI\UnknownCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
