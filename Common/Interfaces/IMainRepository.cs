@@ -14,5 +14,8 @@ namespace GitTrainingApp
         LookupItem RetrieveById(string id);
         void Save(LookupItem item);
         void RemoveById(string id);
+
+        void LoadDataStore();
+        void SaveDataStore();
     }
 }

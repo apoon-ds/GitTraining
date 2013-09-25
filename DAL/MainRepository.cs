@@ -76,8 +76,7 @@ namespace GitTrainingApp.DAL
             }
         }
 
-
-        private void LoadDataStore()
+        public void LoadDataStore()
         {
             if (File.Exists(_dataStoreFullPath))
             {
@@ -96,7 +95,7 @@ namespace GitTrainingApp.DAL
             }
         }
 
-        private void SaveDataStore()
+        public void SaveDataStore()
         {
             XElement root = new XElement("Dictionary");
             foreach (LookupItem item in this._dataStore)
