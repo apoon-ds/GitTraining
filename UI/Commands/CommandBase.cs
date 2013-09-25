@@ -5,10 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using GitTrainingApp.Infrastructures;
 
-namespace GitTrainingApp.UI
+namespace GitTrainingApp.UI.Commands
 {
     abstract class CommandBase
     {
+        public virtual string GetHelp
+        {
+            get { return ""; }
+        }
+
         public string CommandName { get; set; }
 
         protected IMainRepository MainRepository { get { return RepositoryFactory.Current.MainRepository; } }
@@ -31,11 +36,6 @@ namespace GitTrainingApp.UI
         public virtual bool ShouldTerminateApp()
         {
             return false;
-        }
-
-        public override string ToString()
-        {
-            return CommandName;
         }
     }
 }

@@ -5,16 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using GitTrainingApp.Common.Entities;
 
-namespace GitTrainingApp.UI
+namespace GitTrainingApp.UI.Commands
 {
     class RemoveCommand:CommandBase
     {
         private string _id = null;
-        public RemoveCommand()
-            : base("remove")
-        {
 
+        public override string GetHelp
+        {
+            get { return "remove <id> - remove object from the store."; }
         }
+
+        public RemoveCommand() : base("remove") {  }
 
         public override void InitParams(params string[] args)
         {

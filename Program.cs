@@ -9,20 +9,21 @@ namespace GitTrainingApp
 {
     class Program
     {
-        private static CommandFactory commandFactory = new CommandFactory();
-
         static void Main(string[] args)
         {
+            Console.WriteLine("Type 'help' for list of commands.");
+
+            RepositoryFactory.Current.MainRepository.LoadDataStore();
+
             while (true)
             {
-                ShowOptions();
-                string input = Console.ReadLine();
+                string input = Prompt();
 
                 if (!String.IsNullOrWhiteSpace(input))
                 {
                     string[] strArgs = input.Split(new char[] { ' ' });
 
-                    var command = commandFactory.GetCommand(strArgs[0], strArgs.Skip(1).ToArray());
+                    var command = CommandFactory.Current.GetCommand(strArgs[0], strArgs.Skip(1).ToArray());
 
                     try
                     {
@@ -37,16 +38,14 @@ namespace GitTrainingApp
                         break;
                 }
             }
+
+            RepositoryFactory.Current.MainRepository.SaveDataStore();
         }
 
-        private static void ShowOptions()
+        private static string Prompt()
         {
-            Console.WriteLine("Options:");
-            Console.WriteLine("list - show all objects in the store.");
-            Console.WriteLine("save <id> <value> - save id/value pair in the store.");
-            Console.WriteLine("remove <id> - remove object from the store.");
-            Console.WriteLine("exit - exit app.");
             Console.Write("> ");
+            return Console.ReadLine();
         }
     }
 }

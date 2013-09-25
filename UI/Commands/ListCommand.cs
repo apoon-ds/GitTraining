@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 using GitTrainingApp.Common.Entities;
 using GitTrainingApp.Infrastructures;
 
-namespace GitTrainingApp.UI
+namespace GitTrainingApp.UI.Commands
 {
     class ListCommand : CommandBase
     {
-        public ListCommand()
-            : base("list")
+        public override string GetHelp
         {
-
+            get
+            {
+                return "list - show all objects in the store.";
+            }
         }
+
+        public ListCommand() : base("list") { }
 
         public override void Execute()
         {

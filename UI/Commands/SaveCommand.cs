@@ -5,11 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using GitTrainingApp.Common.Entities;
 
-namespace GitTrainingApp.UI
+namespace GitTrainingApp.UI.Commands
 {
-    class SaveCommand:CommandBase
+    class SaveCommand : CommandBase
     {
         private LookupItem _item = null;
+
+        public override string GetHelp
+        {
+            get
+            {
+                return "save <id> <value> - save id/value pair in the store.";
+            }
+        }
 
         public SaveCommand()
             : base("save")

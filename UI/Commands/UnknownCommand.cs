@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GitTrainingApp.UI
+namespace GitTrainingApp.UI.Commands
 {
     class UnknownCommand:CommandBase
     {

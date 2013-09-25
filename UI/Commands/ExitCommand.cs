@@ -4,15 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GitTrainingApp.UI
+namespace GitTrainingApp.UI.Commands
 {
     class ExitCommand:CommandBase
     {
-        public ExitCommand()
-            : base("exit")
+        public override string GetHelp
         {
-
+            get
+            {
+                return "exit - exit the application.";
+            }
         }
+
+        public ExitCommand() : base("exit") { }
+
 
         public override void Execute()
         {
