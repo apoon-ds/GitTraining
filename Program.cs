@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GitTrainingApp.Infrastructures;
 
 namespace GitTrainingApp
 {
     class Program
     {
+        private static CommandFactory commandFactory = new CommandFactory();
+
         static void Main(string[] args)
         {
             while (true)
@@ -15,12 +18,23 @@ namespace GitTrainingApp
                 ShowOptions();
                 string input = Console.ReadLine();
 
-                if (input.Trim().Equals("exit", StringComparison.InvariantCultureIgnoreCase) || input.Trim() == "")
-                    break;
-
-                else
+                if (!String.IsNullOrWhiteSpace(input))
                 {
-                    HandleResponse(input);
+                    string[] strArgs = input.Split(new char[] { ' ' });
+
+                    var command = commandFactory.GetCommand(strArgs[0], strArgs.Skip(1).ToArray());
+
+                    try
+                    {
+                        command.Execute();
+                    }
+                    catch (Exception err)
+                    {
+                        Console.WriteLine("Error Occur: " + err.ToString());
+                    }
+
+                    if (command.ShouldTerminateApp())
+                        break;
                 }
             }
         }
@@ -34,23 +48,5 @@ namespace GitTrainingApp
             Console.WriteLine("exit - exit app.");
             Console.Write("> ");
         }
-
-        private static void HandleResponse(string input)
-        {
-            string[] args = input.Split(new char[] {' '}, 3);
-            switch (args[0])
-            {
-                case "list":
-                    Console.WriteLine("list is not implemented");
-                    break;
-                case "save":
-                    Console.WriteLine("save is not implemented");
-                    break;
-                case "remove":
-                    Console.WriteLine("remove is not implemented");
-                    break;
-            }
-        }
-
     }
 }
